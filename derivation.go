@@ -10,6 +10,7 @@ const (
 	masterSeedMaxSize = 64
 )
 
+// NewMasterKey derives the root extended private key from a 16 to 64 byte seed.
 func NewMasterKey(seed []byte) (*ExtendedPrivateKey, error) {
 	if len(seed) < masterSeedMinSize || len(seed) > masterSeedMaxSize {
 		return nil, ErrInvalidSeed
@@ -26,6 +27,7 @@ func NewMasterKey(seed []byte) (*ExtendedPrivateKey, error) {
 	return k, nil
 }
 
+// Child derives the hardened child key at index.
 func (k *ExtendedPrivateKey) Child(index uint32) (*ExtendedPrivateKey, error) {
 	if k == nil {
 		return nil, ErrNilKey
@@ -59,6 +61,7 @@ func (k *ExtendedPrivateKey) Child(index uint32) (*ExtendedPrivateKey, error) {
 	return child, nil
 }
 
+// Derive derives the key at a SLIP-0010 path such as "m/44'/501'/0'".
 func (k *ExtendedPrivateKey) Derive(path string) (*ExtendedPrivateKey, error) {
 	if k == nil {
 		return nil, ErrNilKey
@@ -79,6 +82,7 @@ func (k *ExtendedPrivateKey) Derive(path string) (*ExtendedPrivateKey, error) {
 	return cur, nil
 }
 
+// DerivePath derives the root key from seed and then derives path from it.
 func DerivePath(seed []byte, path string) (*ExtendedPrivateKey, error) {
 	root, err := NewMasterKey(seed)
 	if err != nil {

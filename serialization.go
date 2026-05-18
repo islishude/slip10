@@ -11,6 +11,7 @@ const (
 	binarySize  = len(binaryMagic) + 1 + 4 + 4 + ChainCodeSize + SeedSize
 )
 
+// MarshalBinary encodes k into this package's compact extended-key format.
 func (k *ExtendedPrivateKey) MarshalBinary() ([]byte, error) {
 	if k == nil {
 		return nil, ErrNilKey
@@ -34,6 +35,7 @@ func (k *ExtendedPrivateKey) MarshalBinary() ([]byte, error) {
 	return out, nil
 }
 
+// UnmarshalBinary decodes this package's compact extended-key format into k.
 func (k *ExtendedPrivateKey) UnmarshalBinary(data []byte) error {
 	if k == nil {
 		return ErrNilKey
@@ -58,6 +60,7 @@ func (k *ExtendedPrivateKey) UnmarshalBinary(data []byte) error {
 	return nil
 }
 
+// UnmarshalBinary decodes this package's compact extended-key format.
 func UnmarshalBinary(data []byte) (*ExtendedPrivateKey, error) {
 	k := &ExtendedPrivateKey{}
 	if err := k.UnmarshalBinary(data); err != nil {

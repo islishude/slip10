@@ -3,7 +3,7 @@ package slip10
 import (
 	"crypto/sha256"
 
-	"golang.org/x/crypto/ripemd160"
+	"golang.org/x/crypto/ripemd160" //nolint
 )
 
 func hash160(data []byte) [20]byte {
@@ -20,6 +20,7 @@ func hash160(data []byte) [20]byte {
 	return out
 }
 
+// SLIP10PublicKey returns the SLIP-0010 Ed25519 public-key serialization.
 func (k *ExtendedPrivateKey) SLIP10PublicKey() []byte {
 	if k == nil {
 		return nil
@@ -33,6 +34,7 @@ func (k *ExtendedPrivateKey) SLIP10PublicKey() []byte {
 	return out
 }
 
+// Fingerprint returns the first four bytes of HASH160(SLIP10PublicKey()).
 func (k *ExtendedPrivateKey) Fingerprint() [4]byte {
 	if k == nil {
 		return [4]byte{}

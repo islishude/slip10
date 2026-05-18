@@ -8,6 +8,7 @@ import (
 
 const maxHardenableIndex = HardenedOffset - 1
 
+// Harden converts a non-hardened child index to its hardened form.
 func Harden(i uint32) (uint32, error) {
 	if i >= HardenedOffset {
 		return 0, fmt.Errorf("%w: index %d", ErrInvalidPath, i)
@@ -15,10 +16,12 @@ func Harden(i uint32) (uint32, error) {
 	return i + HardenedOffset, nil
 }
 
+// IsHardened reports whether i is a hardened child index.
 func IsHardened(i uint32) bool {
 	return i >= HardenedOffset
 }
 
+// Unharden converts a hardened child index to its non-hardened base index.
 func Unharden(i uint32) (uint32, error) {
 	if !IsHardened(i) {
 		return 0, ErrNonHardenedDerivation
@@ -26,6 +29,7 @@ func Unharden(i uint32) (uint32, error) {
 	return i - HardenedOffset, nil
 }
 
+// ParsePath parses a hardened-only SLIP-0010 derivation path.
 func ParsePath(path string) ([]uint32, error) {
 	if path == "m" {
 		return nil, nil
