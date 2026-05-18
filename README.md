@@ -33,13 +33,13 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/islishude/slip10"
+	"github.com/islishude/slip10/slip10ed25519"
 )
 
 func main() {
 	seed, _ := hex.DecodeString("000102030405060708090a0b0c0d0e0f")
 
-	key, err := slip10.DerivePath(seed, "m/0'/1'")
+	key, err := slip10ed25519.DerivePath(seed, "m/0'/1'")
 	if err != nil {
 		panic(err)
 	}

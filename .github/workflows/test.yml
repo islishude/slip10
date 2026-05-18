@@ -12,12 +12,18 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        golang: ["^1.26", "^1.25"]
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-go@v6
+
+      - name: Setup go
+        uses: actions/setup-go@v6
         with:
-          go-version-file: go.mod
+          go-version: "${{ matrix.golang }}"
           check-latest: true
+
       - run: go build ./...
       - run: gofmt -d .
       - run: go vet ./...

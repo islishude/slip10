@@ -1,4 +1,4 @@
-package slip10
+package slip10ed25519
 
 import (
 	"fmt"
