@@ -22,7 +22,7 @@ func (z *fieldElement) invert(x *fieldElement) *fieldElement {
 	{{ $i.Output }}.square({{ .X }})
 	{{- $first = 1 }}
 	{{- end }}
-	for range {{ .S }} {
+	for s := {{ $first }}; s < {{ .S }}; s++ {
 		{{ $i.Output }}.square({{ $i.Output }})
 	}
 	{{- end }}

@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        golang: ["1.26.x", "1.25.x"]
+        golang: ["stable", "oldstable"]
     steps:
       - uses: actions/checkout@v7
 

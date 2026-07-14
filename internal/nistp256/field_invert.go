@@ -14,43 +14,43 @@ func (z *fieldElement) invert(x *fieldElement) *fieldElement {
 	z.square(z)
 	z.mul(x, z)
 	t0.square(z)
-	for range 3 {
+	for s := 1; s < 3; s++ {
 		t0.square(t0)
 	}
 	t0.mul(z, t0)
 	t1.square(t0)
-	for range 6 {
+	for s := 1; s < 6; s++ {
 		t1.square(t1)
 	}
 	t0.mul(t0, t1)
-	for range 3 {
+	for s := 0; s < 3; s++ {
 		t0.square(t0)
 	}
 	z.mul(z, t0)
 	t0.square(z)
 	t0.mul(x, t0)
 	t1.square(t0)
-	for range 16 {
+	for s := 1; s < 16; s++ {
 		t1.square(t1)
 	}
 	t0.mul(t0, t1)
-	for range 15 {
+	for s := 0; s < 15; s++ {
 		t0.square(t0)
 	}
 	z.mul(z, t0)
-	for range 17 {
+	for s := 0; s < 17; s++ {
 		t0.square(t0)
 	}
 	t0.mul(x, t0)
-	for range 143 {
+	for s := 0; s < 143; s++ {
 		t0.square(t0)
 	}
 	t0.mul(z, t0)
-	for range 47 {
+	for s := 0; s < 47; s++ {
 		t0.square(t0)
 	}
 	z.mul(z, t0)
-	for range 2 {
+	for s := 0; s < 2; s++ {
 		z.square(z)
 	}
 	z.mul(x, z)

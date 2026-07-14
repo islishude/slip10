@@ -14,60 +14,60 @@ func (z *fieldElement) sqrtCandidate(x *fieldElement) *fieldElement {
 	z.square(x)
 	z.mul(x, z)
 	t0.square(z)
-	for range 2 {
+	for s := 1; s < 2; s++ {
 		t0.square(t0)
 	}
 	t0.mul(z, t0)
 	t1.square(t0)
 	t2.mul(x, t1)
 	t1.square(t2)
-	for range 2 {
+	for s := 1; s < 2; s++ {
 		t1.square(t1)
 	}
 	t1.mul(z, t1)
 	t3.square(t1)
-	for range 4 {
+	for s := 1; s < 4; s++ {
 		t3.square(t3)
 	}
 	t0.mul(t0, t3)
 	t3.square(t0)
-	for range 11 {
+	for s := 1; s < 11; s++ {
 		t3.square(t3)
 	}
 	t0.mul(t0, t3)
 	t3.square(t0)
-	for range 5 {
+	for s := 1; s < 5; s++ {
 		t3.square(t3)
 	}
 	t2.mul(t2, t3)
 	t3.square(t2)
-	for range 27 {
+	for s := 1; s < 27; s++ {
 		t3.square(t3)
 	}
 	t2.mul(t2, t3)
 	t3.square(t2)
-	for range 54 {
+	for s := 1; s < 54; s++ {
 		t3.square(t3)
 	}
 	t2.mul(t2, t3)
 	t3.square(t2)
-	for range 108 {
+	for s := 1; s < 108; s++ {
 		t3.square(t3)
 	}
 	t2.mul(t2, t3)
-	for range 7 {
+	for s := 0; s < 7; s++ {
 		t2.square(t2)
 	}
 	t1.mul(t1, t2)
-	for range 23 {
+	for s := 0; s < 23; s++ {
 		t1.square(t1)
 	}
 	t0.mul(t0, t1)
-	for range 6 {
+	for s := 0; s < 6; s++ {
 		t0.square(t0)
 	}
 	z.mul(z, t0)
-	for range 2 {
+	for s := 0; s < 2; s++ {
 		z.square(z)
 	}
 	return z
